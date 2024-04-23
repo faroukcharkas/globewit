@@ -13,7 +13,7 @@ export async function getWitquiz() {
         let country = country_json[randomIndex];
         let latitude = country.capitalInfo.latlng[0];
         let longitude = country.capitalInfo.latlng[1];
-        let temp_data = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`);
+        let temp_data = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${API_KEY}`);
         let temp_json = await temp_data.json();
         witquizzes.push({
             commonName: country.name.common,
@@ -23,6 +23,6 @@ export async function getWitquiz() {
             temperature: temp_json.main.temp,
         });
     }
-    
+
     return witquizzes;
 }
